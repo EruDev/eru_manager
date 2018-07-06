@@ -26,12 +26,12 @@ xadmin.site.register(views.CommAdminView, GlobalSettings)
 
 
 class HostAdmin(object):
-    model_icon = 'fa fa-list'
-    list_display = ['id', 'host_name', 'os', 'cpu', 'last_login_time', 'is_delete']
-    search_fields = ['id', 'host_name']
-    list_editable = ['host_name', 'is_delete']
-    show_bookmarks = True
-    list_export = ['xls', 'csv', 'xml']
+    model_icon = 'fa fa-list'  # 显示图标
+    list_display = ['id', 'host_name', 'os', 'cpu', 'last_login_time', 'is_delete']  # 需要显示的主机信息
+    search_fields = ['id', 'host_name']  # 搜索需要用到的字段
+    list_editable = ['host_name', 'is_delete'] # 可编辑的主机字典
+    show_bookmarks = True  # 是否启用书签
+    list_export = ['xls', 'csv', 'xml']  # 能导出的类型xls, csv, xml
 
 
 xadmin.site.register(models.HostInfo, HostAdmin)

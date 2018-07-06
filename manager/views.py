@@ -140,7 +140,7 @@ def add_host(request):
         else:
             is_add = 1
             return render(request, 'add_host.html', locals())
-    return render(request, 'add_host.html')
+    return render(request, 'add_host.html', locals())
 
 
 @login_check
