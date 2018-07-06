@@ -1,0 +1,41 @@
+/* 右侧内容-主机列表 */
+.host-list{
+    width: 950px;
+    height: 350px;
+    background: #fff;
+    position: relative;
+    top: -349px;
+    left: 299px;
+}
+.host-list .host-title{
+    color: rgb(69, 197, 210);
+    font-size: 20px;
+    padding-top:10px;
+    padding-left: 10px;
+}
+.host-list .host-title .line{
+    width: 900px;
+    margin-top: 10px;
+    border-top: 1px solid lightgray;
+}
+.host-list .host-btns .btn-toolbar-add{
+    /* position: relative;
+    top:15px;
+    left:10px; */
+    margin: 15px 15px 15px;
+    float: left;
+}
+.host-list .host-btns .btn-toolbar-search{
+    /* position: relative;
+    top:-15px;
+    right:-100px; */
+    float: right;
+    margin: 15px 15px 15px;
+}
+.host-list .host-table{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.host-list .host-table .table-tr{
+    color: gray;
+}

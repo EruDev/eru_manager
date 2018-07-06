@@ -1,0 +1,67 @@
+/* 右侧内容-添加云主机 */
+.file-server{
+    width: 950px;
+    height: 730px;
+    background: #fff;
+
+    position: relative;
+    bottom: 350px;
+    left: 300px;
+}
+.file-server .add-title{
+    color: rgb(69, 197, 210);
+    font-size: 20px;
+    padding-top:10px;
+    padding-left: 10px;
+}
+.file-server .add-title .line{
+    width: 900px;
+    margin-top: 10px;
+    border-top: 1px solid lightgray;
+}
+/* 文件传输表单 */
+.file-server .form-div{
+    margin-top: 10px;
+}
+.file-server .form-div input{
+    width: 300px;
+}
+/* 上传文件 */
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+/* 分发文件 */
+.file-client{
+    color: rgb(69, 197, 210);
+    font-size: 20px;
+    padding-top:10px;
+    padding-left: 10px;
+}
+.file-client .line{
+    width: 900px;
+    margin-top: 10px;
+    border-top: 1px solid lightgray;
+}

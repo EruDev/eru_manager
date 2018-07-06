@@ -1,0 +1,87 @@
+body {
+    background: rgb(240, 240, 240)
+}
+
+/*输入框样式，去掉背景阴影模仿原生应用的输入框*/
+
+input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding-left: 3px;
+    font-size: 16px;
+}
+
+.form-box {
+    margin: 100px auto;
+}
+
+input:focus {
+    outline: none;
+}
+
+.container {
+    width: 400px;
+    height: 500px;
+    background: white;
+    margin: 50px auto;
+    /* 第一个参数: 代表上下偏移 正数往下，负数往上，值越大偏移距离越大 */
+    /* 第二个参数：代表左右偏移，正数往右，负数往左，值越大偏移距离越大 */
+    /* 第三个参数: 代表模糊程度，值越大，越模糊 */
+    /* 第四个参数: 代表阴影颜色 */
+    box-shadow: 3px 3px 13px #999;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.footer a:hover {
+    color: red;
+}
+
+.login-form .title-login {
+    text-align: center;
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.login-form .username_input {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.login-form .passwd_input {
+    margin: 30px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.login-form .email_input {
+    margin: 30px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.login-form .form-account {
+    padding: 30px 0px 0px 0px;
+    margin: 30px auto;
+}
+
+.login-form .form-account .form-noaccount {
+    color: lightgray;
+}
+
+.login-form .login-btn {
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.login-form .login-btn #login-btn {
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 3px 3px 5px lightblue;
+    font-size: 16px;
+}

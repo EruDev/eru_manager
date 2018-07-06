@@ -1,0 +1,120 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    {% block css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header-logo">
+            <a href="{% url 'index' %}">
+                <img class="logo" src="{% static 'imgs/logo.png' %}" alt="logo被吃掉了">
+                <!-- <button class="fa fa-th-list" style="position: absolute; left:200px;top:50px;font-size: 15px;"></button> -->
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-th-list"></i>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url 'hostList' %}">主机列表</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'show_data' %}">动态信息</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'remote_cmd' %}">远程指令</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'file_trans' %}">文件传输</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+            <div class="header-list">
+                <ul class="list">
+                    <li>
+                        <a href="{% url 'logout' %}" style="color:gray;">
+                            <i class="fa fa-close"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa fa-user-circle" style="margin: 0px 8px;"></i>{{ username }}</li>
+                    <li>
+                        <a href="mailto:1027926875@qq.com" style="text-decoration: none;color: gray;">
+                            <i class="fa fa-commenting" style="margin: 0px 8px;"></i>提意见</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- 主体内容 -->
+    <div class="eru-container">
+        <div class="eru-left-nav-title" style="color: #36c; font-family: 'Microsoft-Yahei;'">
+            Eru-manager
+            <strong>控制台</strong>
+        </div>
+        <div class="eru-left-nav-list">
+            <ul class="nav nav-pills nav-stacked eru-left-nav-menu">
+                <li class="eru-left-nav-item">
+                    <a href="{% url 'index' %}">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li class="eru-left-nav-item">
+                    <a href="{% url 'hostList' %}">
+                        <i class="fa fa-server"></i>
+                        <span>主机列表</span>
+                    </a>
+                </li>
+                <li class="eru-left-nav-item">
+                    <a href="{% url 'show_data' %}">
+                        <i class="fa fa-bar-chart"></i>
+                        <span>动态信息</span>
+                    </a>
+                </li>
+                <li class="eru-left-nav-item">
+                    <a href="{% url 'remote_cmd' %}">
+                        <i class="fa fa-keyboard-o"></i>
+                        <span>远程指令</span>
+                    </a>
+                </li>
+                <li class="eru-left-nav-item">
+                    <a href="{% url 'file_trans' %}">
+                        <i class="fa fa-file"></i>
+                        <span>文件传输</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% block content %}
+    <!-- 主体内容 -->
+    {% endblock %}
+
+    <!-- 底部 -->
+    {% block footer %}
+
+    {% endblock %}
+</body>
+
+</html>

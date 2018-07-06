@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}ERU-Manager | 文件上传-分发{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/file_trans.css' %}">{% endblock %}
+
+{% block content %}
+<!-- 向服务器上传文件 -->
+    <div class="file-server">
+        <!-- 标题 -->
+        <div class="add-title">
+            <strong>
+                <span class="fa fa-code"></span>向服务器上传文件</strong>
+            <div class="line"></div>
+        </div>
+        <!-- 上传文件 -->
+        <div class="upload-file">
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin: 50px 0px 0px 200px;">
+                    <label for="" style="position: relative; top:-10px;">文件 <span>File</span></label>&nbsp;&nbsp;
+                        <a href="javascript:;" class="file"><i class="fa fa-cloud-upload"></i>添加文件
+                            <input type="file" name="upload_file" id="">
+                        </a>
+                </div>
+
+                <div class="form-group" style="margin-left:270px; margin-top: 20px">
+                    <div class="btn-upload">
+                        <button type="submit" class="btn btn-success" name="upload">上传</button>
+                    </div>
+                </div>
+                <!-- 判断是否上传成功 -->
+                <div style="width: 80%;height: auto; text-align: center">
+                    {% if is_success %}
+                        <p style="color: green;font-size: small">{{ upload_tips }}</p>
+                    {% else %}
+                        <p style="color: red;font-size: small">{{ upload_tips }}</p>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <!-- 向客户端分发文件 -->
+        <div class="file-client" style="margin-top: 30px;">
+            <strong>
+                <span class="fa fa-code"></span>向客户端分发文件</strong>
+            <div class="line"></div>
+        </div>
+
+        <div class="form-div" style="margin-left: 200px; margin-top: 30px;">
+            <form method="post" enctype="multipart/form-data" class="form-horizontal" role="form" style="margin-left: -80px;">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="ipt1" class="col-sm-2 control-label">客户端IP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt1" name="des_ip" value="" placeholder="请输入要上传的客户端IP">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt2" class="col-sm-2 control-label">客户端登录用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt2" name="client_user" value="" placeholder="请输入用户名">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt3" class="col-sm-2 control-label">客户端登录密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="ipt3" name="client_passwd" value="" placeholder="请输入密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt4" class="col-sm-2 control-label">要分发的文件路径</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt4" name="put_file_path" value="" placeholder="请输入文件路径.例如 C:\files.txt">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt5" class="col-sm-2 control-label">要在客户端保存的路径</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt5" name="save_path" value="" placeholder="此处不填则默认保存在'/home/tmp/'目录下">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" name="put_file">分发</button>
+                    </div>
+                </div>
+
+                <div style="width: 80%;height: auto;text-align: center">
+                    {% if is_put %}
+                       <p style="color: green; font-size: small">{{ put_tips }}</p>
+                    {% else %}
+                        <p style="color: #aa3333; font-size: small">{{ put_tips }}</p>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div style="text-align: center; margin-top: 50px;position: relative; top: -350px; left: 10px;">
+        &copy; All Rights Reserved.
+        <a href="https://erudev.github.io/" target="_blank" title="Erudev">erudev</a>
+    </div>
+{% endblock %}

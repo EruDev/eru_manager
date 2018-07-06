@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}ERU-Manager | 添加主机{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/add_host.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="add-host">
+        <!-- 标题 -->
+        <div class="add-title">
+            <strong>
+                <span class="fa fa-code"></span>添加主机</strong>
+            <div class="line"></div>
+        </div>
+        <!-- 添加主机表单 -->
+        <div class="form-div">
+            <form class="form-horizontal" role="form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="ipt1" class="col-sm-2 control-label">主机IP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt1" name="ip" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt2" class="col-sm-2 control-label">自定义主机名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt2" name="nickname" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt3" class="col-sm-2 control-label">管理员用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt3" name="admin" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt4" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="ipt4" name="password" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">添加主机</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <p style="color: green; font-size: small    ">
+                            <strong>提示：添加成功后，将会自动读取主机信息</strong>
+                        </p>
+                    </div>
+                </div>
+            </form>
+            {% if is_add == 0 %}
+            <script>
+                alert('添加成功!');
+                window.location.href = '{% url 'hostList' %}';
+            </script>
+            {% elif is_add == 1 %}
+            <script>
+                alert('不好意思, 添加失败')
+            </script>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}
+{% block footer %}
+<div style="text-align: center; margin-top: 50px;position: relative; top: -350px; left: 10px;">
+        &copy; All Rights Reserved.
+        <a href="https://erudev.github.io/" target="_blank" title="Erudev">erudev</a>
+    </div>
+{% endblock %}

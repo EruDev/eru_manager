@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ERU-Manager | 注册</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <form class="login-form" method="post">
+                {% csrf_token %}
+                <p class="title-login">注册</p>
+                <div class="username_input">
+                    <input type="text" placeholder="" name="name" placeholder="请输入用户名">
+                </div>
+                <div class="email_input">
+                    <input type="text" placeholder="" name="email" placeholder="请输入邮箱">
+                </div>
+                <div class="passwd_input">
+                    <input type="password" placeholder="" name="password" placeholder="请输入密码">
+                </div>
+
+                <!-- 判断用户名密码是否正确 -->
+                {% if warn %}
+                    <script>
+                        alert('用户名已存在, 请选择一个独一无二的O(∩_∩)O');
+                    </script>
+                {% endif %}
+                <p class="form-account">
+                    <span class="form-noaccount">已注册?&nbsp;</span>
+                    <a href="{% url 'login' %}">直接登录</a>
+                </p>
+                <div class="login-btn">
+                    <button class="btn btn-info" id="login-btn" type="submit">注册</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <p class="footer">&copy;All Rights Reserved.
+        <a href="http://erudev.github.io/">EruDev</a>
+    </p>
+</body>
+
+</html>

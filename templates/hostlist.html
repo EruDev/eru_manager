@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}ERU-Manager | 主机列表{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/hostlist.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- 左侧内容-主机列表 -->
+        <div class="host-list">
+            <!-- 主机名 -->
+            <div class="host-title">
+                <strong><span class="fa fa-code"></span>云主机信息</strong>
+                <div class="line"></div>
+            </div>
+            <!-- 新增按钮 -->
+            <div class="host-btns">
+                <div class="btn-toolbar-add">
+                    <a href="{% url 'add_host' %}">
+                        <button type="button" class="btn btn-success">
+                            <span class="fa fa-plus"></span> 新增
+                        </button>
+                    </a>
+                </div>
+
+                <!-- 搜索按钮 -->
+                <div class="btn-toolbar-search">
+                    <input type="text" class="input-search" style="border-bottom: 1px solid lightgray;">
+                        <button type="button" class="btn btn-success">
+                            <span class="fa fa-search"></span>
+                        </button>
+                </div>
+            </div>
+
+            <!-- 云主机表单 -->
+            <div class="host-table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-tr">
+                            <th>IP</th>
+                            <th>名称</th>
+                            <th>操作系统</th>
+                            <th>CPU</th>
+                            <th>最近开机时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in host_list %}
+                        <tr>
+                            <td>{{ item.ip }}</td>
+                            <td>{{ item.host_name }}</td>
+                            <td>{{ item.os }}</td>
+                            <td>{{ item.cpu }}</td>
+                            <td>{{ item.last_login_time }}</td>
+                            <td>
+                                <div class="btn-delete">
+                                    <a href="/manager/del_host/?id={{ item.id }}">
+                                        <button type="button" class="btn btn-default"  style="color: red;"><span class="fa fa-trash-o"></span> 删除</button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+{% endblock %}
+
+{% block footer %}
+<div style="text-align: center; position: relative; top:-300px;left: 10px;">
+        &copy; All Rights Reserved.
+        <a href="https://erudev.github.io/" target="_blank" title="Erudev">erudev</a>
+    </div>
+{% endblock %}

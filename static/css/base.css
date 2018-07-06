@@ -1,0 +1,85 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+button {
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
+}
+
+body {
+    background: rgb(240, 240, 240);
+}
+
+/* 头部 */
+
+.header {
+    width: 100%;
+    height: 12%;
+    background: #fff;
+    position: relative;
+}
+
+.header .header-logo {
+    height: 100px;
+
+}
+
+.header .header-logo .logo {
+    float: left;
+}
+
+.header .header-list .list li {
+    font-size: 14px;
+}
+
+.header .header-list .list li {
+    float: right;
+    list-style: none;
+    margin: 40px 15px;
+}
+
+.header .header-list .list li {
+    color: gray;
+}
+
+/* 主体内容 */
+
+.eru-container {
+    width: 250px;
+    height: 360px;
+    background: #fff;
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
+.eru-container .eru-left-nav-title {
+    font-size: 16px;
+    color: gray;
+    margin-left: 15px;
+    padding-top: 20px;
+}
+
+.eru-container .eru-left-nav-list .eru-left-nav-menu {
+    list-style: none;
+    line-height: 40px;
+}
+
+/* .eru-container .eru-left-nav-list .eru-left-nav-menu li{
+    margin: 10px 0px;
+    padding-left: 15px;
+} */
+
+.eru-container .eru-left-nav-list .eru-left-nav-menu li a {
+    color: gray;
+}
+
+.eru-container .eru-left-nav-list .eru-left-nav-menu li a i {
+    font-size: 16px;
+    margin-right: 3px;
+    color: gray;
+}

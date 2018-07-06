@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}ERU-Manager | CPU信息展示{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/show_data.css' %}">
+    <script src="{% static 'js/Chart.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<!-- 左侧内容-主机列表 -->
+<div class="host-list">
+    <!-- 主机名 -->
+    <div class="host-title">
+        <strong><span class="fa fa-code"></span>CPU信息展示</strong>
+        <div class="line"></div>
+    </div>
+
+    <!-- 动态显示CPU信息 -->
+    <div class="cpu-block" style="text-align: center">
+        <canvas id="canvas" height="300px" width="700px"></canvas>
+        <h3>CPU信息动态展示</h3>
+        <p style="color: lightgreen; font-size: small">tips: 请确保客户端主机在运行send_data.py脚本</p>
+        <script>
+            $(
+                function () {
+                    // 实例化画布
+                    var canvas = $('#canvas').get(0).getContext("2d");
+                    canData = {
+                        // 设置横纵坐标
+                        labels:[],
+                        datasets:[
+                            {
+                                fillColor:"rgba(200,0,0,0.5)",
+                                strokeColor:"rgba(0,200,200,1)",
+                                data:[] // 要展示的数据, 通过ajax传过来
+                            }
+                        ]
+                    };
+                    // 绘制线条
+                    var line = new Chart(canvas).Line(canData);
+                    // ajax, 动态加载数据
+                    var int = setInterval(
+                        function () {
+                            $.ajax(
+                                {
+                                    type:"get",
+                                    url:"http://127.0.0.1:8000/manager/get_data/",
+                                    data: "",
+                                    success: function (data) {
+                                        console.log(data);
+                                        // 添加锚点
+                                        line.addData([data['data']], data['time'])
+                                        // 获取锚点个数
+                                        var len = line.datasets[0].points.length;
+                                        if (len > 10){
+                                            line.removeData(); // 删除最开始的一个点
+                                        }
+                                    },
+                                    error: function (error) {
+                                        console.log(error);
+                                    }
+                                }
+                            )
+                        },
+                        1000
+                    )
+                }
+            )
+        </script>
+    </div>
+</div>
+{% endblock %}

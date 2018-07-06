@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}ERU-Manager | 主页{% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container">
+                <div class="eru-content-title">
+                    <strong>欢迎 {{ username }} 进入ERU-Manager version 1.0(Beta) CMDB 管理系统</strong>
+                </div>
+                <div class="eru-content-desc">
+                    <div class="eru-desc-title">
+                        <h3 style="padding-top: 10px;">ERU-Manager介绍</h3>
+                        <p>
+                            ERU-Manager是一个基于Django框架开发的一款CMDB管理系统, 目前处于Beta版本, 功能主要包含: <code>管理系统管理的客户主机列表</code>,
+                            <code>动态显示客户机状态信息</code>, <code>远程指令操作指定客户机</code>以及<code>主机与客户机之间的文件传输</code>。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row" style="float: left;">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="dashboard-list blue">
+                            <div class="dashboard-icon">
+                                <i class="fa fa-server" style="font-size: 80px; color: rgba(73, 162, 223, 0.7);margin-top: 20px;"></i>
+                            </div>
+                            <div class="details">
+                                <div class="info" style="float: right; color: #fff;font-size:30px; margin-top: -60px;padding-right: 10px; font-family: 'Microsoft Yahei;'">主机列表</div>
+                            </div>
+                            <a class="more" href="{% url 'hostList' %}" style="color: #fff; font-size:14px;margin-left: 5px; background: rgb(42,146,217)">查看
+                                <i class="fa fa-arrow-circle-o-right" style="float: right; margin-right: 15px; margin-top: 3px; font-size: 15px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="dashboard-list red">
+                            <div class="dashboard-icon">
+                                <i class="fa fa-bar-chart" style="font-size: 80px; color: rgba(233, 97, 106, 0.7);margin-top: 20px;"></i>
+                            </div>
+                            <div class="details">
+                                <div class="info" style="float: right; color: #fff;font-size:30px; margin-top: -60px;padding-right: 10px; font-family: 'Microsoft Yahei;'">动态信息</div>
+                            </div>
+                            <a class="more" href="{% url 'show_data' %}" style="color: #fff; font-size:14px;margin-left: 5px; background: rgb(230,67,78)">查看
+                                <i class="fa fa-arrow-circle-o-right" style="float: right; margin-right: 15px; margin-top: 3px; font-size: 15px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="dashboard-list green">
+                            <div class="dashboard-icon">
+                                <i class="fa fa-keyboard-o" style="font-size: 80px; color: rgba(70, 203, 214, 0.7);margin-top: 20px;"></i>
+                            </div>
+                            <div class="details">
+                                <div class="info" style="float: right; color: #fff;font-size:30px; margin-top: -60px;padding-right: 10px; font-family: 'Microsoft Yahei;'">远程指令</div>
+                            </div>
+                            <a class="more" href="{% url 'remote_cmd' %}" style="color: #fff; font-size:14px;margin-left: 5px; background: rgb(45,188,200)">查看
+                                <i class="fa fa-arrow-circle-o-right" style="float: right; margin-right: 15px; margin-top: 3px; font-size: 15px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="dashboard-list gold">
+                            <div class="dashboard-icon">
+                                <i class="fa fa-file" style="font-size: 80px; color: rgba(153, 86, 181, 0.7);margin-top: 20px;"></i>
+                            </div>
+                            <div class="details">
+                                <div class="info" style="float: right; color: #fff;font-size:30px; margin-top: -60px;padding-right: 10px; font-family: 'Microsoft Yahei;'">文件传输</div>
+                            </div>
+                            <a class="more" href="{% url 'file_trans' %}" style="color: #fff; font-size:14px;margin-left: 5px; background: rgb(134,64,163)">查看
+                                <i class="fa fa-arrow-circle-o-right" style="float: right; margin-right: 15px; margin-top: 3px; font-size: 15px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div style="text-align: center; position: relative; top:100px;left: 0px;">
+        &copy; All Rights Reserved.
+        <a href="https://erudev.github.io/" target="_blank" title="Erudev">erudev</a>
+</div>
+{% endblock %}

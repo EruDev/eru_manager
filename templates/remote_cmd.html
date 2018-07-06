@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}ERU-Manager | 远程指令控制{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/remote_cmd.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- 远程指令控制 -->
+    <div class="add-host">
+        <!-- 标题 -->
+        <div class="add-title">
+            <strong>
+                <span class="fa fa-code"></span>远程指令控制</strong>
+            <div class="line"></div>
+        </div>
+        <!-- 发送远程指令 -->
+        <div class="form-div">
+            <form class="form-horizontal" role="form" style="margin-left: -80px;" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="ipt1" class="col-sm-2 control-label">客户端IP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt1" name="ip" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt2" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt2" name="username" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt3" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt3" name="password" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt4" class="col-sm-2 control-label">port</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt4" name="port" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ipt4" class="col-sm-2 control-label">指令</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ipt4" name="cmd" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" name="sendcmd">发送指令</button>
+                        <button type="submit" class="btn btn-success" name="history">发送历史</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <span style="position: relative; top:-300px; left:480px;">输出显示框</span>
+        <div style="font-size:13px; float: right;width:45%; height:auto; color: white;background-color: black; border:2px solid lightseagreen; margin-right:5%;
+        padding:2%;margin-top: -29%;">
+        {% if showFlag == 'remote' %}
+            {% if remote %}
+                {% for cmd in remote %}
+                    <li style="list-style: none;">{{ cmd }}</li>
+                {% endfor %}
+            {% else %}
+                <p>连接主机失败, 请检查输入的信息是否正确</p>
+            {% endif %}
+        {% elif showFlag == 'result' %}
+            {% for cmd in results %}
+                <li style="list-style: none;">{{ cmd.time }}>>>"{{ cmd.cmd }}">>>[{{ cmd.host }}]</li>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div style="text-align: center; margin-top: 50px;position: relative; top: -350px; left: 10px;">
+        &copy; All Rights Reserved.
+        <a href="https://erudev.github.io/" target="_blank" title="Erudev">erudev</a>
+    </div>
+{% endblock %}
