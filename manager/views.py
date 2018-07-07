@@ -118,9 +118,9 @@ def get_host_info(ip, admin, password, nickname):
         db_host = HostInfo()
         db_host.ip = ip
         db_host.host_name = nickname
-        db_host.cpu = str(r.ssh('cat /proc/cpuinfo | grep name |cut -f2 -d:')[0].replace('\n', ''))
-        db_host.os = str(r.ssh('cat /etc/issue')[0].replace('\\n', '').replace('\\l\n', ''))
-        db_host.last_login_time = str(r.ssh("who -b | cut -d ' ' -f 13,14")[0].replace('\n', ''))
+        db_host.cpu = str(r.ssh('cat /proc/cpuinfo | grep name |cut -f2 -d:')[0].replace('\n', '')) # cpu信息
+        db_host.os = str(r.ssh('cat /etc/issue')[0].replace('\\n', '').replace('\\l\n', '')) # 系统版本
+        db_host.last_login_time = str(r.ssh("who -b | cut -d ' ' -f 13,14")[0].replace('\n', '')) # 上次登录时间
         db_host.is_delete = False
         db_host.save()
         return True
