@@ -68,6 +68,11 @@ def login(request):
 
 
 def logout(request):
+    """
+    退出
+    :param request:
+    :return:
+    """
     request.session.clear()
     response = redirect(reverse('login'))
     response.delete_cookie('name')
