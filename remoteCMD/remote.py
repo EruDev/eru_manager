@@ -14,12 +14,14 @@ class Remote(object):
     def ssh(self, cmd):
         self.cmd = cmd
         try:
+            # 基于paramiko.Transport 的连接方式
             transport = paramiko.Transport((self.host, self.port))
             transport.connect(username=self.usename, password=self.password)
         except Exception as e:
             print(e)
             return False
         else:
+            # 基于paramiko.SSHClient() 的连接方式
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh._transport = transport
@@ -74,10 +76,10 @@ class Sftp(object):
 
 
 # if __name__ == '__main__':
-# #     # r = Remote(host='47.105.48.255', username='root', password='32+wunai', port=22)
+# #     # r = Remote(host='47.105.48.255', username='root', password='****', port=22)
 # #     # result = r.ssh('cat /etc/issue')[0].replace('\\n', '').replace('\\l\n', '')
 # #     # print(result)
-#     sftp = Sftp(hostip='47.105.48.255', username='root', passwd='32+wunai')
+#     sftp = Sftp(hostip='47.105.48.255', username='root', passwd='****')
 #     upload_file = 'C:\\Code\\test.txt'
 #     remote_path = '/home/zhaopf/'
 #     sftp.put(upload_file, remote_path)
