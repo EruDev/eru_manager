@@ -1,5 +1,4 @@
 # ERU-Manager version 1.0(Beta) CMDB 管理系统
-> 项目原地址: [https://github.com/vimiix/vmx_manager](https://github.com/vimiix/vmx_manager), 已经过 @vimiix 同意才传的 github, 只是在原基础上加了一些东西, 改了一些东西
 
 ## 系统介绍
 
