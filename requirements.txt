@@ -24,7 +24,7 @@ pycparser==2.18
 PyNaCl==1.2.1
 pytz==2018.4
 PyYAML==3.13
-requests==2.19.1
+requests==2.20.0
 six==1.11.0
 tablib==0.12.1
 unicodecsv==0.14.1
