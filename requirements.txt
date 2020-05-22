@@ -5,7 +5,7 @@ cffi==1.11.5
 chardet==3.0.4
 cryptography==2.2.2
 diff-match-patch==20121119
-Django==1.11.1
+Django==1.11.28
 django-crispy-forms==1.7.2
 django-formtools==2.1
 django-import-export==1.0.1
